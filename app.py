@@ -95,7 +95,7 @@ PLOT = dict(
 RED, ORANGE, AMBER, GREEN, BLUE, CYAN = "#EF4444","#F97316","#F59E0B","#10B981","#3B82F6","#06B6D4"
 
 # ── Data loading ──────────────────────────────────────────────────────────────
-DATA_DIR = "/mnt/user-data/uploads"
+DATA_DIR = os.path.dirname(os.path.abspath(__file__))
 
 @st.cache_data
 def load_data():
