@@ -13,9 +13,8 @@ Metrics:
   Shortage-concentration intersection (maximum vulnerability)
 
 Research context:
-  Prototype for NSF Award 2228510, Thrust 3:
+
   "Designing an Improved Information Infrastructure for Better Decision
-  Making in Pharmaceutical Supply Chains" — Griffin, Ergun et al., Northeastern.
 
 Author: Rutwik Satish | MS Engineering Management, Northeastern University
 """
@@ -170,7 +169,6 @@ def load_data():
 
     return shortage, products, rx, conc, current, merged, company_risk
 
-
 shortage_df, products_df, rx_df, conc_df, current_df, merged_df, company_risk_df = load_data()
 
 # ── Key numbers ───────────────────────────────────────────────────────────────
@@ -200,14 +198,7 @@ with st.sidebar:
     Approved Drug Products<br><br>
     <b style="color:#8BA4C0;">License:</b> Public domain (FDA)
     </div>""", unsafe_allow_html=True)
-    st.markdown('<hr>', unsafe_allow_html=True)
-    st.markdown("""
-    <div style="font-size:11px;color:#3A5A7C;line-height:1.7;">
-    Prototype for Thrust 3 of<br>
-    <b style="color:#8BA4C0;">NSF Award 2228510</b><br>
-    <i>Griffin, Ergun et al.</i><br>
-    Northeastern University
-    </div>""", unsafe_allow_html=True)
+
     st.markdown('<hr>', unsafe_allow_html=True)
     st.markdown("""
     <div style="font-size:11px;color:#3A5A7C;line-height:1.8;">
@@ -238,10 +229,7 @@ st.markdown(f"""
     Cross-referenced against live FDA drug shortage records to identify
     maximum-vulnerability drugs: shortage active AND few or no substitutes.
   </div>
-  <div style="font-size:11px;color:#2A4060;font-style:italic;">
-    Prototype for NSF Award 2228510, Thrust 3 — network-based vulnerability metrics.
-    Griffin, Ergun et al., Northeastern University.
-  </div>
+
 </div>
 """, unsafe_allow_html=True)
 
@@ -333,7 +321,6 @@ with t1:
     st.caption(f"Showing {len(disp):,} of {len(conc_df):,} ingredients.")
     st.download_button("Export", disp.to_csv(index=False), "concentration.csv", "text/csv")
 
-
 # ════ TAB 2 — CURRENT SHORTAGES ════
 with t2:
     st.markdown(f"""
@@ -402,7 +389,6 @@ with t2:
     st.plotly_chart(fig4, use_container_width=True, config={"displayModeBar":False})
     st.caption("Hospira (Pfizer) and Fresenius Kabi account for over 27% of all active shortage records.")
 
-
 # ════ TAB 3 — VULNERABILITY INTERSECTION ════
 with t3:
     matched = merged_df[merged_df['HHI'].notna()].copy()
@@ -411,7 +397,7 @@ with t3:
          border-radius:10px;padding:12px 16px;margin-bottom:16px;font-size:13px;color:#8BA4C0;line-height:1.7;">
     <b style="color:#F87171;">Maximum vulnerability</b> = drug currently in shortage AND high supply concentration.
     These carry double risk: shortage is active AND structural substitution is limited.
-    This intersection is the core network vulnerability metric proposed in NSF Award 2228510, Thrust 3.
+    This intersection is the core network vulnerability metric for pharmaceutical supply chain resilience.
     </div>""", unsafe_allow_html=True)
 
     v1,v2,v3 = st.columns(3)
@@ -468,7 +454,6 @@ with t3:
     )
     st.download_button("Export", tbl.to_csv(index=False), "vulnerability.csv", "text/csv")
 
-
 # ════ TAB 4 — COMPANY EXPOSURE ════
 with t4:
     st.markdown("""
@@ -477,7 +462,7 @@ with t4:
     <b style="color:#93C5FD;">Network criticality</b>: if a company's manufacturing is disrupted,
     how many single-source drugs lose their only supplier?
     This is the node criticality analysis for pharmaceutical supply networks —
-    directly supporting Thrust 3 of NSF Award 2228510.
+    A key metric for understanding systemic fragility in pharmaceutical supply networks.
     </div>""", unsafe_allow_html=True)
 
     top_ss = company_risk_df[company_risk_df['n_single_source_drugs'] > 0].sort_values(
@@ -539,13 +524,11 @@ with t4:
     )
     st.download_button("Export", disp_cr.to_csv(index=False), "company_risk.csv", "text/csv")
 
-
 # ── Footer ─────────────────────────────────────────────────────────────────────
 st.divider()
 st.markdown("""
 <p style='font-size:11px;color:#2A4060;text-align:center;line-height:1.8;'>
 PharmNet Risk · FDA Pharmaceutical Supply Chain Concentration Analyzer · Real FDA data — no synthetic data ·
 HHI: Hirschman (1945) · GAO (2014) Drug Shortages: Root Causes and Potential Solutions ·
-Prototype for NSF Award 2228510, Thrust 3 (Griffin, Ergun et al., Northeastern University) ·
 Built by Rutwik Satish · MS Engineering Management, Northeastern University
 </p>""", unsafe_allow_html=True)
