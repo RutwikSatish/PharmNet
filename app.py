@@ -36,7 +36,7 @@ st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
 html,body,[class*="css"]{font-family:'DM Sans',sans-serif;background:#04080F;}
-#MainMenu,footer,header{visibility:hidden;}
+#MainMenu,footer,header{visibility:!important;}
 .block-container{padding-top:0!important;max-width:1400px;}
 [data-testid="metric-container"]{
   background:#080F1E;border:1px solid rgba(239,68,68,0.2);border-radius:12px;
